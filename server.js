@@ -19,6 +19,9 @@ app.get('/temp-adventure', (req, res) => {
 app.get('/temp-events', (req, res) => {  
     res.sendFile(path.join(__dirname + '/temp/events-stewardship.html'));
 })
+app.get('/temp-einstein', (req, res) => {  
+    res.sendFile(path.join(__dirname + '/temp/einstein-response.json'));
+})
 
 //Static file declaration
 app.use(express.static(path.join(__dirname, 'client/build')));
