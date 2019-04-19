@@ -1,0 +1,49 @@
+{
+  "name": "explore-rei-einstein",
+  "version": "1.0.0",
+  "description": "App using Einstein AI to gather results from REI Events and Adventures",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client-install": "npm install --prefix client",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonuday/explore-rei-einstein.git"
+  },
+  "keywords": [
+    "react",
+    "nodejs",
+    "express",
+    "einstein",
+    "ai",
+    "rei"
+  ],
+  "author": "jonuday",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jonuday/explore-rei-einstein/issues"
+  },
+  "homepage": "https://github.com/jonuday/explore-rei-einstein#readme",
+  "dependencies": {
+    "concurrently": "^4.1.0",
+    "es6-promise": "^4.2.6",
+    "express": "^4.16.4",
+    "node-fetch": "^2.3.0",
+    "nodemon": "^1.18.11",
+    "react-router-dom": "^5.0.0"
+  },
+  "devDependencies": {
+    "module-alias": "^2.2.0"
+  },
+  "_moduleAliases": {
+    "root": ".",
+    "routes": "./server/routes",
+    "server": "./server"
+  }
+}
