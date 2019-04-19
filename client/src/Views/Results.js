@@ -46,8 +46,9 @@ class Results extends Component {
             console.log(err)
         });
     };
-    fetchEvents() {
-        fetch('/events')
+    // @TODO: Add location to apiUrl query.
+    fetchEvents(category) {
+        fetch('/events?category=' + category)
         .then(res => res.json())
         .then(data => {
             let list = this.domParser(data.events, 'course-results', 'event-cards');

@@ -9,21 +9,19 @@ module.exports = (app) => {
         let category = req.query.category;
 
         const apiUrl = 'http://localhost:5000/temp-adventure'; 
-        tempUrl = 'https://www.rei.com/adventures/a/'+category+'?r=a&origin=web'; // need to set it up
-        if (apiUrl != '') {
+        // @TEMP: Be kind - don't hit the rei servers with crazy requests.
+        // apiUrl = 'https://www.rei.com/adventures/a/'+category+'?r=a&origin=web'; 
+        
+        fetch(apiUrl)
+        .then(res => res.text())
+        .then(data => {
+            res.send({ 
+                adventures: data
+                });
+        })
+        .catch(err => {
+            res.redirect('/error');
+        })
 
-            fetch(apiUrl)
-            .then(res => res.text())
-            .then(data => {
-                res.send({ 
-                    adventures: data
-                 });
-            })
-            .catch(err => {
-                // res.redirect('/error');
-                res.send(err);
-            })
-
-        } 
     });
 }

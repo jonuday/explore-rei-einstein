@@ -6,9 +6,13 @@ module.exports = (app) => {
     app.get('/events', (req, res) => {
 
         let category = req.query.category;
+        // @TODO: Add location to apiUrl query.
+        // let location = req.query.location;
         
         const apiUrl = 'http://localhost:5000/temp-events'; 
-        const temp = 'https://www.rei.com/events/a/' + category + '?previousLocation=San+Francisco%2C+CA%2C+USA&course.session.anyLocation=100.000000~38.232417~-122.636652;geo_r'
+        // @TEMP: Be kind - don't hit the rei servers with crazy requests.
+        // @TODO: Add location to apiUrl.
+        // const apiUrl = 'https://www.rei.com/events/a/' + category + '?previousLocation=San+Francisco%2C+CA%2C+USA&course.session.anyLocation=100.000000~38.232417~-122.636652;geo_r'
         if (apiUrl != '') {
             fetch(apiUrl)
             .then(res => res.text())
