@@ -75,9 +75,10 @@ class Results extends Component {
     }
     
     render() {
-        if(this.state.adventures === '' && this.state.events === '') {
-            this.state.isLoading = false;
+        if (this.state.isLoading === true && this.state.adventures !== '' && this.state.events !== '') {
+            this.setState({ isLoading: false });
         }
+        
         const ExploreResults = (
             this.state.adventures === '' && this.state.events === '' ? <div> 
                 <div className='homeBtn'>
