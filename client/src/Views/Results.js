@@ -46,8 +46,9 @@ class Results extends Component {
             console.log(err)
         });
     };
-    fetchEvents() {
-        fetch('/events')
+    // @TODO: Add location to apiUrl query.
+    fetchEvents(category) {
+        fetch('/events?category=' + category)
         .then(res => res.json())
         .then(data => {
             let list = this.domParser(data.events, 'course-results', 'event-cards');
@@ -75,9 +76,10 @@ class Results extends Component {
     }
     
     render() {
-        if(this.state.adventures === '' && this.state.events === '') {
-            this.state.isLoading = false;
+        if (this.state.isLoading === true && this.state.adventures !== '' && this.state.events !== '') {
+            this.setState({ isLoading: false });
         }
+        
         const ExploreResults = (
             this.state.adventures === '' && this.state.events === '' ? <div> 
                 <div className='homeBtn'>

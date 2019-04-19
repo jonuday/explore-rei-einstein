@@ -19,21 +19,25 @@ app.get('/temp-adventure', (req, res) => {
 app.get('/temp-events', (req, res) => {  
     res.sendFile(path.join(__dirname + '/temp/events-stewardship.html'));
 })
-// //Static file declaration
-// app.use(express.static(path.join(__dirname, 'client/build')));
+app.get('/temp-einstein', (req, res) => {  
+    res.sendFile(path.join(__dirname + '/temp/einstein-response.json'));
+})
 
-// //production mode
-// if(process.env.NODE_ENV === 'production') {
-//   app.use(express.static(path.join(__dirname, 'client/build')));
-//   //
-//   app.get('*', (req, res) => {
-//     res.sendfile(path.join(__dirname = 'client/build/index.html'));
-//   })
-// }
-// //build mode
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname+'/client/public/index.html'));
-// })
+//Static file declaration
+app.use(express.static(path.join(__dirname, 'client/build')));
+
+//production mode
+if(process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, 'client/build')));
+  //
+  app.get('*', (req, res) => {
+    res.sendfile(path.join(__dirname = 'client/build/index.html'));
+  })
+}
+//build mode
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname+'/client/public/index.html'));
+})
 
 // Start server
 app.listen(port, (req, res) => {
