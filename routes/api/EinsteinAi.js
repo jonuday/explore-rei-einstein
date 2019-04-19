@@ -26,7 +26,8 @@ module.exports = (app) => {
         body.append("Content-Type", "multipart/form-data");
         body.append("modelId", "32JI7GZFCNIYCOGM2ZNEFLJ25E");
         body.append("document", sentence);
-        const CLIENT_TOKEN = CLIENT_TOKEN || false;
+        // @TODO: Get client token from Oauth.
+        const CLIENT_TOKEN = false;
         
         if (CLIENT_TOKEN !== false ) {
             fetch(apiUrl, {
