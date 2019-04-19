@@ -6,11 +6,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "client-install": "npm install --prefix client",
+    "client-build": "npm run build --prefix client",
     "start": "node server.js",
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm run client-install && npm run client-build"
   },
   "repository": {
     "type": "git",
@@ -40,6 +41,10 @@
   },
   "devDependencies": {
     "module-alias": "^2.2.0"
+  },
+  "engines": {
+    "node": "~11.14.0",
+    "npm": "~6.9.0"
   },
   "_moduleAliases": {
     "root": ".",
