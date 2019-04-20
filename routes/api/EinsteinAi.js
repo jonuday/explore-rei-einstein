@@ -34,19 +34,21 @@ module.exports = (app) => {
         body.append("document", sentence);
         // @TODO: Get client token from Oauth.
         let token = oAuthToken.get();
-        if (!token) {            
+
+        if (!token && process.env.NODE_ENV !== "LOCAL") {            
             auth.update(EINSTEIN_VISION_URL, EINSTEIN_VISION_PRIVATE_KEY, EINSTEIN_VISION_ACCOUNT_ID);
             token = oAuthToken.get();
+        } else {
+            token = false;
         }
         
-        const CLIENT_TOKEN =  token || false;
-        console.log('EAI: ',CLIENT_TOKEN);
+        console.log('EAI: ',token);
 
-        if (CLIENT_TOKEN !== false ) {
+        if (token !== false ) {
             fetch(apiUrl, {
                 body,
                 headers: {
-                    Authorization: "Bearer " + CLIENT_TOKEN,
+                    Authorization: "Bearer " + token,
                     "Cache-Control": "no-cache"                    
                 },
                 method: "POST"
@@ -65,7 +67,7 @@ module.exports = (app) => {
                 })
         } 
         else {           
-            fetch('http://localhost:5000/temp-einstein')
+            fetch('http://localhost:5000/temp/einstein-response')
                 .then(res => res.json())
                 .then(data =>{                    
                     res.send({ 

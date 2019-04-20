@@ -8,9 +8,11 @@ module.exports = (app) => {
         
         let category = req.query.category;
 
-        const apiUrl = 'http://localhost:5000/temp-adventure'; 
-        // @TEMP: Be kind - don't hit the rei servers with crazy requests.
-        // apiUrl = 'https://www.rei.com/adventures/a/'+category+'?r=a&origin=web'; 
+
+        const apiUrl = 'http://localhost:5000/temp/adventures-stewardship'; 
+        if (process.env) {
+            apiUrl = 'https://www.rei.com/adventures/a/'+category+'?r=a&origin=web'; 
+        }
         
         fetch(apiUrl)
         .then(res => res.text())

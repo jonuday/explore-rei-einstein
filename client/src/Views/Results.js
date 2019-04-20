@@ -64,6 +64,7 @@ class Results extends Component {
         const parser = new DOMParser();
         
         // Parse the text
+        console.log(html);
         let doc = parser.parseFromString(html, "text/html");
         let docList = doc.getElementById(wrapper).querySelector(selector).innerHTML;
         return docList;
