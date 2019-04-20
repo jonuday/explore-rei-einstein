@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Plak Black Condensed','Roboto Condensed','Arial Condensed Extra Bold';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #FFF;
+  color: #000;
+}
+h1, h2, h3, button {
+  font-family: 'Roboto','Arial Extra Bold';
+}
+a {
+  color: #3278ae;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
