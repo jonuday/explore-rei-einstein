@@ -21,12 +21,14 @@ module.exports = (app) => {
     app.get('/listen_to_einstein', (req, res) => {
         
         sentence = sentence || 'I want to climb a mountain';
+        location = location || '';
+        
         const apiUrl = 'https://api.einstein.ai/v2/language/intent';
         const body = new FormData();
         body.append("Content-Type", "multipart/form-data");
         body.append("modelId", "32JI7GZFCNIYCOGM2ZNEFLJ25E");
         body.append("document", sentence);
-        // @TODO: Get client token from Oauth.
+        // @TODO: Get client token from Oauth. Currently can be set manually.
         const CLIENT_TOKEN = false;
         
         if (CLIENT_TOKEN !== false ) {
@@ -43,7 +45,8 @@ module.exports = (app) => {
                     // @TODO: Add items with probability higher than 90%                    
                     res.send({ 
                         einstein: data.probabilities[0]['label'], 
-                        sentence: sentence
+                        sentence: sentence,
+                        location: location,
                     });
                 })
                 .catch(err => {                    
@@ -56,7 +59,8 @@ module.exports = (app) => {
                 .then(data =>{                    
                     res.send({ 
                         einstein: data.probabilities[0]['label'],
-                        sentence: sentence
+                        sentence: sentence,
+                        location: location,
                     });
                 })
         }
