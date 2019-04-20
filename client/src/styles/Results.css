@@ -1,0 +1,147 @@
+/* Summary */
+.summary {
+    text-align: left;
+    padding: 0 1em 1em;
+}
+.summary h1 {
+    font-size: 1.15em;
+    font-weight: 100;
+}
+.summary h2 {
+    font-size: 1.5em;
+    color: #333;
+    font-style: italic;
+}
+.summary button {
+    color: #FFF;
+    background-color: #426c90;
+    border-color: #426c90;
+    font-size: 1em;
+    padding: 16px;
+}
+.summary button:hover {
+    background-color: #2b455c;
+    border-color: #2b455c;
+}
+/* Results */
+.results-wrapper {
+    display: flex;
+    flex-flow: column-reverse;
+    align-items: stretch;
+}
+.results {
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+.results > h3 {
+    padding: 3em 1em 1em 1em;
+    margin: 0;
+    text-align: left;
+    text-transform: uppercase;
+    color: #FFF;
+    text-shadow: 1px 1px 2px #000
+}
+.results a {
+    color: #616161;
+    text-decoration: none;
+}
+.results a:hover {
+    color: #000;
+}
+
+/* shared */
+.results ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.results li,
+.results div.card {
+    padding: 10px 0;
+    float: left;
+    width: 100%;
+    border-bottom: 1px solid #999;
+}
+.results div.card {
+    padding-bottom: 0;
+}
+.results li:hover,
+.results div.card:hover {
+    background-color: #F9FCF4;
+}
+.results [class*="cdr-media-object__figure_0.1.5"], 
+.results .card-media-top {
+    float: left;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    margin-right:16px;
+}
+.results img {
+    float: left;
+    height: 100px;
+    width: auto;
+}
+.results .list-adventures h3,
+.results .list-events h3  {
+    margin: 0.25em 0 0.5em;
+}
+.results p {
+    margin: 0.25em 0;
+}
+/* adventures */
+.results [class*="cdr-media-object_0.1.5"] + div  {
+    display: none;
+}
+.adventures .bv_main_container {
+    width: calc(100% - 117px);
+    display: block;
+    float: right;
+}
+/* events */
+
+.results .card-block {
+    padding: 0 0.25em;
+}
+.results .card-block.date-card {
+    padding: 0;
+}
+.results .session-tiles .event {
+    display: inline-flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: baseline;
+    background-color: #EFEFEF;
+    border-top: 1px solid #CCC;
+    padding: 0.25em;
+    box-sizing: border-box;
+}
+.results .tile-block .event > div {
+    width: 50%;
+}
+.results .tile-block .event > div:first-child {
+    width: 25%;
+}
+.results .tile-block .event > div:last-child {
+    width: 25%;
+    text-align: right;
+}
+.results .tile-block .event p {
+    padding: 0;
+    margin: 0;
+}
+.results .tile-block .event .day-of-week,
+.results .tile-block .event .day-of-week + div {
+    display: inline;
+}
+
+/* actions */
+.show + * {
+    display: block;
+}
+
+.hide + * {
+    display: none;
+}
