@@ -1,6 +1,12 @@
 // The call to Eistein should return one of the event/travel type classes
 const fetch = require('node-fetch');
 const FormData = require('form-data');
+const auth = require('../../auth');
+const oAuthToken = require('../../oauth-token');
+
+const EINSTEIN_VISION_URL = process.env.EINSTEIN_VISION_URL;
+const EINSTEIN_VISION_ACCOUNT_ID  = process.env.EINSTEIN_VISION_ACCOUNT_ID;
+const EINSTEIN_VISION_PRIVATE_KEY = process.env.EINSTEIN_VISION_PRIVATE_KEY;
 
 module.exports = (app) => {
     let sentence;
@@ -27,8 +33,15 @@ module.exports = (app) => {
         body.append("modelId", "32JI7GZFCNIYCOGM2ZNEFLJ25E");
         body.append("document", sentence);
         // @TODO: Get client token from Oauth.
-        const CLIENT_TOKEN = false;
+        let token = oAuthToken.get();
+        if (!token) {            
+            auth.update(EINSTEIN_VISION_URL, EINSTEIN_VISION_PRIVATE_KEY, EINSTEIN_VISION_ACCOUNT_ID);
+            token = oAuthToken.get();
+        }
         
+        const CLIENT_TOKEN =  token || false;
+        console.log('EAI: ',CLIENT_TOKEN);
+
         if (CLIENT_TOKEN !== false ) {
             fetch(apiUrl, {
                 body,
@@ -47,7 +60,8 @@ module.exports = (app) => {
                     });
                 })
                 .catch(err => {                    
-                    res.redirect('/error');
+                    // res.redirect('/error');
+                    res.send({message: err});
                 })
         } 
         else {           
