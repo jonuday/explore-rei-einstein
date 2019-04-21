@@ -33,6 +33,7 @@
   "homepage": "https://github.com/jonuday/explore-rei-einstein#readme",
   "dependencies": {
     "concurrently": "^4.1.0",
+    "cors": "^2.8.5",
     "es6-promise": "^4.2.6",
     "express": "^4.16.4",
     "form-data": "^2.3.3",
