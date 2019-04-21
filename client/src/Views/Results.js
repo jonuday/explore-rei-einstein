@@ -36,7 +36,7 @@ class Results extends Component {
 	}
 
     fetchEinstein(){
-        fetch('/listen_to_einstein')
+        fetch('/api/listen_to_einstein')
         .then(res => res.json())
         .then(data => { 
             if (!data.einstein) {
@@ -60,7 +60,7 @@ class Results extends Component {
     }
 
     fetchAdventures(category) {
-        fetch('/adventures?category=' + category)
+        fetch('/api/adventures?category=' + category)
         .then(res => res.json())
         .then(data => {
             let list = this.domParser(data.adventures, 'search-results', 'ul');
@@ -79,7 +79,7 @@ class Results extends Component {
     };
     // @TODO: Add location to apiUrl query.
     fetchEvents(category, location) {
-        fetch('/events?category=' + category + '&location=' + encodeURIComponent(location))
+        fetch('/api/events?category=' + category + '&location=' + encodeURIComponent(location))
         .then(res => res.json())
         .then(data => {
             let list = this.domParser(data.events, 'course-results', 'event-cards');
