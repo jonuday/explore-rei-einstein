@@ -151,7 +151,7 @@ class Results extends Component {
         )
 
         const Results = ( 
-            this.state.isLoading === true ? <div> {LoadingDisplay} </div> : <div className="results-wrapper"> {ExploreResults} {Events} {Adventures}</div> 
+            this.state.isLoading === true ? <div> {LoadingDisplay} </div> : <div className="results-wrapper"> {ExploreResults} {Adventures} {Events}</div> 
         )
 
         return (
