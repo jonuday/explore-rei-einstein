@@ -24,7 +24,7 @@ module.exports = (app) => {
         sentence = sentence || 'I want to climb a mountain';
         location = location || '';
         
-        const apiUrl = 'https://api.einstein.ai/v2/language/intent';
+        let apiUrl = 'https://api.einstein.ai/v2/language/intent';
         const body = new FormData();
         body.append("Content-Type", "multipart/form-data");
         body.append("modelId", "32JI7GZFCNIYCOGM2ZNEFLJ25E");
@@ -62,7 +62,7 @@ module.exports = (app) => {
         } 
         else {
             apiUrl = 'http://localhost:5000/temp/einstein';
-            
+
             if (process.env.NODE_ENV === 'production') {
                 apiUrl = 'https://stark-sea-90144.herokuapp.com/temp/einstein';
             }
