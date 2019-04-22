@@ -9,7 +9,7 @@ const Home = () => {
     <div className="home-wrapper" style={{ backgroundImage: 'url(' + background + ')', backgroundSize: 'cover', backgroundPosition: 'center' }}>        
 
         <div className='explore-form'>
-            <p className="examples"><TextLoop interval={3500} delay={1000} children={["I want to help the world.", "I want to take my kids cycling.","How do I climb mountains.","I need to get back in shape.", "How do I survive in the wilderness?"]} /></p>
+            <p className="examples"><TextLoop interval={3500} delay={1000} children={["I want to help the world.", "I want to take my kids cycling.","How do I climb mountains?","I need to get back in shape.", "How do I survive in the wilderness?"]} /></p>
 
             <form method='POST' action='/api/ask_einstein'>
                 <label>
