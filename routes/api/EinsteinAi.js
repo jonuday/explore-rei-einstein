@@ -60,8 +60,13 @@ module.exports = (app) => {
                     res.redirect('/error');
                 })
         } 
-        else {           
-            fetch('http://localhost:5000/temp/einstein')
+        else {
+            apiUrl = 'http://localhost:5000/temp/einstein';
+            
+            if (process.env.NODE_ENV === 'production') {
+                apiUrl = 'https://stark-sea-90144.herokuapp.com/temp/einstein';
+            }
+            fetch(apiUrl)
                 .then(res => res.json())
                 .then(data =>{                    
                     res.send({ 
