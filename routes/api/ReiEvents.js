@@ -13,7 +13,7 @@ module.exports = (app) => {
         if (process.env.NODE_ENV === 'production') {
             apiUrl = 'https://stark-sea-90144.herokuapp.com/temp/events';
         } 
-        else if (process.env.REI_CALLS === 'true') {           
+        if (process.env.REI_CALLS === 'true') {           
             apiUrl = 'https://www.rei.com/events/a/' + category + '?previousLocation=' + encodeURIComponent(location) + '%2C+USA&course.session.anyLocation=100.000000~38.232417~-122.636652;geo_r'
             console.log('Calling rei.com/events');
         }

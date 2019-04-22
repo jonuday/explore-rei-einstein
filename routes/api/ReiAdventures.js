@@ -12,7 +12,7 @@ module.exports = (app) => {
         if (process.env.NODE_ENV === 'production') {
             apiUrl = 'https://stark-sea-90144.herokuapp.com/temp/adventures';
         } 
-        else if (process.env.REI_CALLS === 'true') { 
+        if (process.env.REI_CALLS === 'true') { 
             apiUrl = 'https://www.rei.com/adventures/a/'+category+'?r=a&origin=web'; 
             console.log('Calling rei.com/adventures');
         }
