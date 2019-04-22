@@ -1,14 +1,13 @@
 .home-wrapper {
-    height: 100vh;
+    height: calc(100vh - 50px);
     margin: 0;
-    padding: 0;
+    padding: 5vh 0 0 0;
     top: 50px;
     position: absolute;
     width: 100%;
     box-sizing: border-box;
     display: flex;
     justify-content: center;
-    padding-top: 20vh;
 }
 
 .explore-form {
@@ -33,4 +32,29 @@
     padding: 0.65em;
     margin-top: 2em;
     font-weight: bold;
+}
+
+.explore-form .examples {
+    position: relative;
+    background: rgba(255,255,255,0.925);
+    border-radius: 4em;
+    padding: 1.5em;
+    font-size: 0.8em;
+    color: #444;
+    text-shadow: none;
+    width: 90%;
+    margin: 0 0 2.5em 10%;
+}
+    
+.explore-form .examples:after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    right: 12%;
+    width: 0;
+    height: 0;
+    border: 1em solid rgba(255,255,255,0.925);
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    border-right-color: transparent;    
 }

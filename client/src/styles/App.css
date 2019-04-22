@@ -48,8 +48,8 @@
   display: block;
   position: absolute;
   left: calc(50% - 10px);
-  border: 15px double #FFF;
-  border-left-color: rgba(255,255,255,0.25);
+  border: 15px double #000;
+  border-left-color: rgba(0,0,0,0.25);
   border-radius: 100%;
   margin-top: 1em;
 }
