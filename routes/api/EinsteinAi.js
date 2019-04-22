@@ -1,12 +1,13 @@
 // The call to Eistein should return one of the event/travel type classes
 const fetch = require('node-fetch');
 const FormData = require('form-data');
+const cors = require('cors');
 
 module.exports = (app) => {
     let sentence;
     let location;
     
-    app.post('/ask_einstein', (req, res) => {
+    app.post('/api/ask_einstein',  cors(), (req, res) => {
 
         sentence = req.body.sentence;
         location = req.body.location;
@@ -18,20 +19,26 @@ module.exports = (app) => {
 		}
     })
     
-    app.get('/listen_to_einstein', (req, res) => {
+    app.get('/api/listen_to_einstein',  cors(), (req, res) => {
         
         sentence = sentence || 'I want to climb a mountain';
         location = location || '';
         
-        const apiUrl = 'https://api.einstein.ai/v2/language/intent';
+        let apiUrl = 'https://api.einstein.ai/v2/language/intent';
         const body = new FormData();
         body.append("Content-Type", "multipart/form-data");
         body.append("modelId", "32JI7GZFCNIYCOGM2ZNEFLJ25E");
         body.append("document", sentence);
         // @TODO: Get client token from Oauth. Currently can be set manually.
-        const CLIENT_TOKEN = false;
+
+        let CLIENT_TOKEN = false;
+        console.log(process.env.EINSTEIN_CLIENT_TOKEN);
+        if (process.env.EINSTEIN_CLIENT_TOKEN) {
+            CLIENT_TOKEN = process.env.EINSTEIN_CLIENT_TOKEN;
+        }
         
         if (CLIENT_TOKEN !== false ) {
+            console.log('Calling EinsteinAi');
             fetch(apiUrl, {
                 body,
                 headers: {
@@ -53,8 +60,13 @@ module.exports = (app) => {
                     res.redirect('/error');
                 })
         } 
-        else {           
-            fetch('http://localhost:5000/temp-einstein')
+        else {
+            apiUrl = 'http://localhost:5000/temp/einstein';
+
+            if (process.env.NODE_ENV === 'production') {
+                apiUrl = 'https://stark-sea-90144.herokuapp.com/temp/einstein';
+            }
+            fetch(apiUrl)
                 .then(res => res.json())
                 .then(data =>{                    
                     res.send({ 

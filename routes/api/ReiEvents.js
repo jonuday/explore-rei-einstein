@@ -1,16 +1,22 @@
 // The call to REI should return the first page of a list of filtered results
 const fetch = require('node-fetch');
+const cors = require('cors');
 
 module.exports = (app) => {
     
-    app.get('/events', (req, res) => {
+    app.get('/api/events',  cors(), (req, res) => {
 
         let category = req.query.category;
         let location = req.query.location;
-        const apiUrl = 'http://localhost:5000/temp-events'; 
-        // @TEMP: Be kind - don't hit the rei servers with crazy requests. The call below worked locally.
-        // @TODO: Add location to apiUrl.
-        // const apiUrl = 'https://www.rei.com/events/a/' + category + '?previousLocation=' + encodeURIComponent(location) + '%2C+USA&course.session.anyLocation=100.000000~38.232417~-122.636652;geo_r'
+        
+        let apiUrl = 'http://localhost:5000/temp/events'; 
+        if (process.env.NODE_ENV === 'production') {
+            apiUrl = 'https://stark-sea-90144.herokuapp.com/temp/events';
+        } 
+        else if (process.env.REI_CALLS === 'true') {           
+            apiUrl = 'https://www.rei.com/events/a/' + category + '?previousLocation=' + encodeURIComponent(location) + '%2C+USA&course.session.anyLocation=100.000000~38.232417~-122.636652;geo_r'
+            console.log('Calling rei.com/events');
+        }
         if (apiUrl != '') {
             fetch(apiUrl)
             .then(res => res.text())
@@ -20,7 +26,8 @@ module.exports = (app) => {
             .catch(err => {
                 res.redirect('/error');
             })
-        } else {
+        } 
+        else {
             // temporary response
             res.send({ events: [
                 {id: 1, title: "Events Test Title"}
