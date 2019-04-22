@@ -10,6 +10,7 @@ app.use(express.json());
 
 // Routes
 // require('./routes')(app);
+require('./routes/api/AccessToken')(app);
 require('./routes/api/EinsteinAi')(app);
 require('./routes/api/ReiAdventures')(app);
 require('./routes/api/ReiEvents')(app);
