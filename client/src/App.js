@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import logo from './assets/rei-co-op-logo-black.svg';
 import './styles/App.css';
 
