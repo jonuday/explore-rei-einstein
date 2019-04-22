@@ -132,14 +132,14 @@ class Results extends Component {
 
         const Adventures = (
             this.state.adventures !== '' ? <div className="results adventures">
-                <h3 onClick={this.toggleAdventures} className={adventureToggler} style={{ backgroundImage: 'url(' + adventureBackground + ')', backgroundSize: 'cover', backgroundPosition: 'center' }}>Adventures &amp; Travel</h3>
+                <h3 onClick={this.toggleAdventures} className={adventureToggler} style={{ backgroundImage: 'url(' + adventureBackground + ')', backgroundSize: 'cover', backgroundPosition: 'center' }}><span>Adventures &amp; Travel</span></h3>
                 <ul className="list-adventures" dangerouslySetInnerHTML={{ __html: this.state.adventures }} />
             </div> : ''
         );
 
         const Events = (
             this.state.events !== '' ? <div className="results events">
-                <h3 onClick={this.toggleEvents} className={eventToggler} style={{ backgroundImage: 'url(' + eventBackground + ')', backgroundSize: 'cover', backgroundPosition: 'center' }}>Classes &amp; Events <small>{this.state.location}</small></h3>                
+                <h3 onClick={this.toggleEvents} className={eventToggler} style={{ backgroundImage: 'url(' + eventBackground + ')', backgroundSize: 'cover', backgroundPosition: 'center' }}><span>Classes &amp; Events <small>{this.state.location}</small></span></h3>
                 <div className="list-events" dangerouslySetInnerHTML={{ __html: this.state.events}} />
             </div> : ''
         );
