@@ -82,6 +82,7 @@ class Results extends Component {
         fetch('/api/events?category=' + category + '&location=' + encodeURIComponent(location))
         .then(res => res.json())
         .then(data => {
+            // @TODO: Add logic if area has no events
             let list = this.domParser(data.events, 'course-results', 'event-cards');
             list = list.replace(/<img src="/g,'<img src="http://www.rei.com');
             list = list.replace(/href="/g,'href="http://www.rei.com/');

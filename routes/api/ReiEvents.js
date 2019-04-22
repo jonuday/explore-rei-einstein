@@ -9,7 +9,18 @@ module.exports = (app) => {
         let category = req.query.category;
         let location = req.query.location;
         
-        let apiUrl = 'https://www.rei.com/events/a/' + category + '?previousLocation=' + encodeURIComponent(location) + '%2C+USA&course.session.anyLocation=100.000000~38.232417~-122.636652;geo_r'
+        // Examples of REI Events Pages
+        // /events/p/us-or-portland?previousLocation=Portland,%20OR
+        // /events/p/us-wa-seattle?previousLocation=Seattle,%20WA
+        // /p/us-mi-detroit?previousLocation=Detroit,%20MI
+        // /events/p/us-mi-detroit/a/outdoor-fitness
+
+        console.log(location)
+        location_array = location.split(',');
+        city = location_array[0];
+        state = location_array[1];
+
+        let apiUrl = 'https://www.rei.com/events/p/us-' + state + '-' + city + '/a/' + category;
         console.log('Calling rei.com/events');
 
         fetch(apiUrl)
