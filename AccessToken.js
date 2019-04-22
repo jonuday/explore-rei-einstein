@@ -6,7 +6,7 @@ let expiration = null;
 let accessToken = null;
 
  async function getEinsteinToken() {
-    if (!process.env.EINSTEIN_CLIENT_TOKEN) {
+    if (!process.env.MANUAL_ACCESS_TOKEN || !process.env.EINSTEIN_VISION_PRIVATE_KEY) {
 
         const apiUrl = process.env.EINSTEIN_VISION_URL + 'v2/oauth2/token';
 
@@ -79,7 +79,7 @@ let accessToken = null;
         expiration = payloadExpiration;
 
 
-        console.log('No process.env.EINSTEIN_CLIENT_TOKEN set, generating oAuth token.');
+        console.log('No process.env.MANUAL_ACCESS_TOKEN set, generating oAuth token.');
         access_token = await getToken(apiUrl, token);
         return(access_token);
 
@@ -87,8 +87,18 @@ let accessToken = null;
     
     } 
     else {
-        console.log('Manual process.env.EINSTEIN_CLIENT_TOKEN set in ".env", remove to generate oAuth token.');
-        return process.env.EINSTEIN_CLIENT_TOKEN;
+        
+        let local_access_token = false;
+        if (process.env.MANUAL_ACCESS_TOKEN) {
+            console.log('MANUAL_ACCESS_TOKEN found in ".env"');
+            local_access_token = process.env.MANUAL_ACCESS_TOKEN;
+        } else {
+            console.log('Either No MANUAL_ACCESS_TOKEN set in ".env" or running `npm run dev`.');
+            console.log('Set MANUAL_ACCESS_TOKEN="your token" in ".env" and run `heroku local` to connect to Einstein API from local machine.');
+            console.log('Temp Einstein API result (stewardship) used.');
+        }
+       
+        return(local_access_token);
     }
 };
 

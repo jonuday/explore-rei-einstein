@@ -35,7 +35,7 @@ module.exports = (app) => {
         token.update().then(response => {
             CLIENT_TOKEN = response;
         
-            if (CLIENT_TOKEN !== 'false') {
+            if (CLIENT_TOKEN !== 'false' && CLIENT_TOKEN !== false && CLIENT_TOKEN !== undefined) {
                 console.log('Calling EinsteinAi');
                 fetch(apiUrl, {
                     body,
@@ -76,11 +76,6 @@ module.exports = (app) => {
                     })
             }
         });
-
-        // console.log(process.env.EINSTEIN_CLIENT_TOKEN);
-        // if (process.env.EINSTEIN_CLIENT_TOKEN) {
-        //     CLIENT_TOKEN = process.env.EINSTEIN_CLIENT_TOKEN;
-        // }
         
     }); 
 
