@@ -27,7 +27,7 @@ module.exports = (app) => {
             process.env.EINSTEIN_VISION_PRIVATE_KEY,
             { algorithm: 'RS256'},
         );
-        const response = fetch(`${procss.env.EINSTEIN_VISION_URL}v2/oauth2/token`, {
+        const response = fetch(`${process.env.EINSTEIN_VISION_URL}v2/oauth2/token`, {
             body: `grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer&assertion=${token}`,
             headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
