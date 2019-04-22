@@ -33,6 +33,13 @@
   color: #FFF;
 }
 
+@media screen and (min-width: 768px) {
+  .header {
+    padding-left: 16%;
+    padding-right: 16%;
+  }
+}
+
 /* Loader */ 
 .loading { 
   animation: App-loader-spin infinite 1s linear;

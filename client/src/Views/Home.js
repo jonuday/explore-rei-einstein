@@ -14,7 +14,7 @@ const Home = () => {
                 </label>
                 <label>
                     <p>Tell us where you are.</p>
-                    <input id="location" type='text' placeholder='San Francisco, CA' name='location'/>
+                    <input id="location" type='text' placeholder='e.g. San Francisco, CA' name='location'/>
                 </label>
                 <div><button>Explore</button></div>
             </form>
