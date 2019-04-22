@@ -2,7 +2,7 @@
 const fetch = require('node-fetch');
 const FormData = require('form-data');
 const cors = require('cors');
-const accessToken = require('./accessToken');
+const accessToken = require('./AccessToken');
 
 module.exports = (app) => {
     let sentence;
