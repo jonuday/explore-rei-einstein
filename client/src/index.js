@@ -5,7 +5,7 @@ import './styles/index.css';
 import App from './App';
 import Home from './Views/Home';
 import Results from './Views/Results';
-// import ErrorDisplay from './Views/Error';
+import ErrorDisplay from './Views/Error';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
@@ -14,6 +14,7 @@ ReactDOM.render(
         <Switch>
             <Route exact path='/' component={Home}/>      
             <Route exact path='/results' component={Results}/>  
+            <Route exact path='/error' component={ErrorDisplay}/>
         </Switch>
       </App>
     </Router>
@@ -23,6 +24,4 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
-
-// <Route exact path='/error' component={ErrorDisplay}/>
           

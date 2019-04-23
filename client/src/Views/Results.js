@@ -82,9 +82,26 @@ class Results extends Component {
         fetch('/api/events?category=' + category + '&location=' + encodeURIComponent(location))
         .then(res => res.json())
         .then(data => {
-            let list = this.domParser(data.events, 'course-results', 'event-cards');
-            list = list.replace(/<img src="/g,'<img src="http://www.rei.com');
-            list = list.replace(/href="/g,'href="http://www.rei.com/');
+            // @TODO: Add logic if area has no events
+            let list;
+            console.log(data);
+            if(data == 'error'){
+                list = '<p class="summary">Sorry, there was an error fetching events.</p>';
+            }
+            else {
+                let test = JSON.stringify(data);
+                let check = test.match(/\(0 results\)/g);
+
+                if (check && check[0] === '(0 results)') {
+                    list = '<p class="summary">Sorry, no results available.</p>';
+                } else {
+                    list = this.domParser(data.events, 'course-results', 'event-cards');
+                    list = list.replace(/<img src="/g,'<img src="http://www.rei.com');
+                    list = list.replace(/href="/g,'href="http://www.rei.com/');
+                }
+                
+            }
+            
             this.setState({ events: list });
         })
         .catch(err => {

@@ -8,14 +8,7 @@ module.exports = (app) => {
    app.get('/api/adventures', cors(), (req, res) => {
         
         let category = req.query.category;
-        let apiUrl = 'http://localhost:5000/temp/adventures';
-        if (process.env.NODE_ENV === 'production') {
-            apiUrl = 'https://stark-sea-90144.herokuapp.com/temp/adventures';
-        } 
-        if (process.env.REI_CALLS === 'true') { 
-            apiUrl = 'https://www.rei.com/adventures/a/'+category+'?r=a&origin=web'; 
-            console.log('Calling rei.com/adventures');
-        }
+        let apiUrl = 'https://www.rei.com/adventures/a/'+category+'?r=a&origin=web'; 
         
         fetch(apiUrl)
             .then(res => res.text())
