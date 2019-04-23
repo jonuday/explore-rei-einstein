@@ -8,22 +8,31 @@ Install the packages for both the server and client.
 
 `npm install && npm run client-install`
 
+Build the React Client.
+
+`npm run client-build`
+
+Set up your .env (dotenv) file at the project root. Minimal settings are below.
+
+***
+NODE_ENV='LOCAL'
+EINSTEIN_VISION_PRIVATE_KEY=false
+MANUAL_ACCESS_TOKEN=false
+***
+
+Run the Heroku server locally
+
+`heroku local`
+
 # Enabling the Einstein API Manually
-Set EINSTEIN_CLIENT_TOKEN to your manually created token or 'false' to use the response in the /temp directory.
+Set MANUAL_ACCESS_TOKEN to your manually created token to access the API<br />
+You can also set it to 'false' to use the JSON response for 'stewardship' in the /temp directory.
 Generate token at [https://api.einstein.ai/token](https://api.einstein.ai/token)
 
 ***
-MANUAL_ACCESS_TOKEN=token
+MANUAL_ACCESS_TOKEN=token or false
 EINSTEIN_VISION_ACCOUNT_ID='Account ID'
 EINSTEIN_VISION_URL='https://api.einstein.ai/'
-***
-
-# Enabling calls to REI for local development
-
-Calls to the REI website are enabled using the .env file for heroku local developement.
-
-***
-REI_CALLS=true
 ***
 
 # Available Scripts
@@ -50,4 +59,3 @@ Open [http://localhost:5000/temp/<file_name>](http://localhost:5000/api/<file_na
 
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
-
