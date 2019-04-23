@@ -1,0 +1,21 @@
+.error-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: calc( 100vh - 50px);
+    color: #FFF;
+}
+
+.error-wrapper button {
+    color: #FFF;
+    background-color: #426c90;
+    border-color: #426c90;
+    font-size: 1em;
+    padding: 16px;
+}
+.error-wrapper button:hover {
+    background-color: #2b455c;
+    border-color: #2b455c;
+}

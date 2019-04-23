@@ -14,7 +14,7 @@ const Home = () => {
             <form method='POST' action='/api/ask_einstein'>
                 <label>
                     <p>Tell us what you want to do in one sentence... </p>                    
-                    <input id="sentence" type='text' placeholder="I want..." name='sentence'/>
+                    <input id="sentence" type='text' placeholder="I want..." name='sentence' required/>
                 </label>
                 <p></p>
                 <label>

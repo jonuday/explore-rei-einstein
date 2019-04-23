@@ -15,13 +15,17 @@ module.exports = (app) => {
         // /p/us-mi-detroit?previousLocation=Detroit,%20MI
         // /events/p/us-mi-detroit/a/outdoor-fitness
 
-        console.log(location)
-        location_array = location.split(',');
-        city = location_array[0];
-        state = location_array[1];
+        let apiUrl = 'https://www.rei.com/events';
+        if (location) {
+            location_array = location.split(',');
+            let city = location_array[0].trim().toLowerCase();
+            let state = location_array[1].trim().toLowerCase();
+            console.log(city.toLowerCase().trim(), state.toLowerCase().trim());
+            apiUrl = apiUrl + '/p/us-' + state.replace(' ', '-') + '-' + city.replace(' ', '-');
+        }
 
-        let apiUrl = 'https://www.rei.com/events/p/us-' + state + '-' + city + '/a/' + category;
-        console.log('Calling rei.com/events');
+        apiUrl = apiUrl + '/a/' + category.toLowerCase().trim();
+        console.log('Calling: ', apiUrl);
 
         fetch(apiUrl)
         .then(res => res.text())
@@ -29,7 +33,7 @@ module.exports = (app) => {
             res.send({ events: data });
         })
         .catch(err => {
-            res.redirect('/error');
+            res.send({ events: 'error' });
         })
     });
 }
